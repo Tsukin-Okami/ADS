@@ -1,2 +1,2 @@
-# SENAI
+# ADS
 ## Algoritmos escritos em C
