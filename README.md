@@ -1,2 +1,2 @@
-## SENAI
-# Algoritmos escritos em C
+# SENAI
+## Algoritmos escritos em C
