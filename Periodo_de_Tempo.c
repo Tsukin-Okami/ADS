@@ -14,9 +14,9 @@ int main()
     
     int dia,hora,minuto,segundo;
     segundo = segs % s;
-	minuto = (segs/s) % m;
-	hora = (segs/(s*m)) % h;
-	dia = segs/(s*m*h);
+    minuto = (segs/s) % m;
+    hora = (segs/(s*m)) % h;
+    dia = segs/(s*m*h);
     
     printf("%d segundos equivalem a:\n%d dia(s), %d hora(s), %d minuto(s) e %d segundo(s).",segs,dia,hora,minuto,segundo);
     
