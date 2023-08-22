@@ -2,13 +2,13 @@
 #include <stdio.h>
 #include <string.h>
 
+// exercicio 1
+
 #define bf_line 60
 #define bf_escala 40
 #define bf_nome 20
 #define bf_origin 40
 #define bf_goto 40
-
-// exercicio 1
 
 // cidades disponiveis
 #define cidades 5
