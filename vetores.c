@@ -40,7 +40,7 @@ int get_fillers(){
 
 void passageiro_add()
 {
-    int fill = get_fillers();
+    int fill = get_fillers(); // pega espaco usado atualmente
     int qtd;
     printf("Quantos passageiros deseja adicionar: ");
     scanf("%d",&qtd);
@@ -58,17 +58,19 @@ void passageiro_add()
 void lista_escalas()
 {
     printf("\n");
-    for(int i=0;i<cidades;i++){
+    for(int i=0;i<cidades;i++){ // mostra todas as cidades disponiveis
         int z=0, fill=get_fillers();
-        printf("Passageiros de %s:\n",Escalas[i]);
+        printf("Passageiros de %s:\n",Escalas[i]); // mostra as info dos passageiros de acordo com a cidade
         for(int x=0;x<fill;x++){
-            if(strcmp(vGoto[x],Escalas[i]) == 0){
-                z++;
-                printf("\t[%d]:\n\t\tNome: %s\n\t\tOrigem: %s\n\t\tDestino: %s\n",z,vNome[x],vOrigin[x],vGoto[x]);
+            if(strcmp(vGoto[x],Escalas[i]) == 0){ // compara o destino do passageiro com a cidade
+                z++; // indice da tabela do passageiro
+                printf("\t[%d]:\n\t\tNome: %s\n\t\tOrigem: %s\n\t\tDestino: %s\n",z,vNome[x],vOrigin[x],vGoto[x]); // imprime tabela do passageiro
             }
         }
     }
 
+    // espera a entrada do usuario para voltar
+    // sem isso ele automaticamente volta pro menu e nao aparece a tabela de passageiros
     int vlr=0;
     while (vlr != 1)
     {
