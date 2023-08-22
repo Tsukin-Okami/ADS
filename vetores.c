@@ -10,7 +10,7 @@
 
 // cidades disponiveis
 #define cidades 5
-const char Escalas[cidades][bf_escala] = {
+char Escalas[cidades][bf_escala] = {
     "Florianopolis", "Curitiba", "Sao Paulo", "Rio de Janeiro", "Belo Horizonte"
 };
 
@@ -28,14 +28,70 @@ void crline(){
     printf("\n");
 }
 
-// espaco ocupado pelo vetor vNome
+void extract_ASCII(char v[]){
+    printf("ASCII: ");
+    for (int i=0;v[i]!='\0';i++)
+    {
+        printf("\\%d",v[i]);
+    }
+    printf("\n");
+}
+
+// espaco ocupado pelo vetor
 int get_fillers(){
     int filled=0;
-    for(int i=0;vNome[i][0]!='\0';i++){
+    //puts("\nchecking fillers...");
+    for(int i=0;vGoto[i][0]!='\0';i++){
         filled += 1;
         //printf("for func_fill: %d - [%d]\n",filled,vNome[i][0]);
     }
+    //printf("fillers encountered: %d\n",filled);
     return filled;
+}
+
+void limpa_substring(int tipo, int z)
+{
+    /*  
+        remove line feed* que pode ser criado apos inserir uma entrada
+        motivo: entra em conflito ao comparar strings
+
+        *comumente relacionado com '\n' ou em ASCII '\10'
+    */
+
+    char find = 10;
+    char replace = '\0';
+
+    switch (tipo)
+    {
+    case 1: // vnome
+        for(int y=0;vNome[z][y] != '\0';y++){
+            if(vNome[z][y] == find){
+                vNome[z][y] = replace;
+            }
+        }
+        break;
+    case 2: // vorigin
+        for(int y=0;vOrigin[z][y] != '\0';y++){
+            if(vOrigin[z][y] == find){
+                vOrigin[z][y] = replace;
+            }
+        }
+        break; 
+    case 3: // vgoto
+        //puts("before:");
+        //extract_ASCII(vGoto[z]);
+        for(int y=0;vGoto[z][y] != '\0';y++){
+            if(vGoto[z][y] == find){
+                //puts("finded \\10 in string :: replacing");
+                vGoto[z][y] = replace;
+            }
+        }
+        //puts("after:");
+        //extract_ASCII(vGoto[z]);
+        break;
+    default:
+        break;
+    }
 }
 
 void passageiro_add()
@@ -47,25 +103,47 @@ void passageiro_add()
     // repete ate a quantidade de passeiros selecionada
     for(int i=0;i<qtd;i++){
         printf("\nDigite o nome do passageiro[%d]: ",i+1);
-        scanf("%s%*c",&vNome[fill+i]);
+        scanf("%s%*c",&vNome[fill+i]); // usar fgets pula esse e o proximo fgets
+
         printf("Digite a cidade de origem do passageiro[%d]: ",i+1);
+        /*
+        scanf("%s",&vOrigin[fill+i]); 
         fgets(vOrigin[fill+i],bf_origin, stdin);
+        */
+        fgets(vOrigin[fill+i],bf_origin, stdin);
+
         printf("Digite a cidade de destino do passageiro[%d]: ",i+1);
         fgets(vGoto[fill+i],bf_goto, stdin);
+
+        /*limpa_substring(1,fill+i);
+        limpa_substring(2,fill+i);
+        limpa_substring(3,fill+i);*/
+        //printf("\nArmazenado:\n\tNome: %s\n\tOrigem: %s\n\tDestino: %s\n",vNome[fill+i],vOrigin[fill+i],vGoto[fill+i]);
     }
 }
 
 void lista_escalas()
 {
     printf("\n");
+
     for(int i=0;i<cidades;i++){ // mostra todas as cidades disponiveis
-        int z=0, fill=get_fillers();
+        int ind=0, fill=get_fillers();
         printf("Passageiros de %s:\n",Escalas[i]); // mostra as info dos passageiros de acordo com a cidade
         for(int x=0;x<fill;x++){
-            if(strcmp(vGoto[x],Escalas[i]) == 0){ // compara o destino do passageiro com a cidade
-                z++; // indice da tabela do passageiro
-                printf("\t[%d]:\n\t\tNome: %s\n\t\tOrigem: %s\n\t\tDestino: %s\n",z,vNome[x],vOrigin[x],vGoto[x]); // imprime tabela do passageiro
-            }
+            // necessario ao comparar strings
+            limpa_substring(1,x);
+            limpa_substring(2,x);
+            limpa_substring(3,x);
+            // compara o destino do passageiro com a cidade
+            if(strcmp(vGoto[x],Escalas[i]) == 0){
+                ind++; // indice da tabela do passageiro
+                printf("\t[%d] --------------------\n\t\tNome: %s\n\t\tOrigem: %s\n\t\tDestino: %s\n",ind,vNome[x],vOrigin[x],vGoto[x]); // imprime tabela do passageiro
+            }/*
+            else{ // apenas para teste
+                printf("\t COMPARE >> %s :: %s << %d\n",vGoto[x],Escalas[i],strcmp(vGoto[x],Escalas[i]));
+                extract_ASCII(vGoto[x]);
+                extract_ASCII(Escalas[i]);
+            }*/
         }
     }
 
@@ -81,7 +159,7 @@ void lista_escalas()
 
 void intro()
 {
-    int desejo;
+    int desejo=0;
     system("cls");
     crline();
     printf("\tBem vindo ao Terminal da Aero Milhas\n");
@@ -114,23 +192,3 @@ int main(int argc, char const *argv[])
     intro();
     return 0;
 }
-
-/*
-
-O voo de uma empresa aérea possui escalas em cinco cidades: 
-
-- Florianópolis, 
-
-- Curitiba; 
-
-- São Paulo
-
-- Rio de Janeiro,
-
-- Belo Horizonte.
-
-Considerando que para cada passageiro tem-se o seu nome, cidade de origem, 
-e cidade de destino, escreva um programa em C, que para cada cidade, 
-imprima a lista dos passageiros que a tem como destino. 
-
-*/
