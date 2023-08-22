@@ -8,6 +8,8 @@
 #define bf_origin 40
 #define bf_goto 40
 
+// exercicio 1
+
 // cidades disponiveis
 #define cidades 5
 char Escalas[cidades][bf_escala] = {
