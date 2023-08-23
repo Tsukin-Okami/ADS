@@ -137,7 +137,7 @@ void lista_escalas()
             limpa_substring(2,x);
             limpa_substring(3,x);
             // compara o destino do passageiro com a cidade
-            if(strcmp(vGoto[x],Escalas[i]) == 0){
+            if(strcmp(strlwr(vGoto[x]),strlwr(Escalas[i])) == 0){
                 ind++; // indice da tabela do passageiro
                 printf("\t[%d] --------------------\n\t\tNome: %s\n\t\tOrigem: %s\n\t\tDestino: %s\n",ind,vNome[x],vOrigin[x],vGoto[x]); // imprime tabela do passageiro
             }/*
