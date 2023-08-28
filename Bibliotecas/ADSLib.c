@@ -11,7 +11,9 @@ void ADS_Vsort(int vector[], int vector_size) // ADSLib :: organiza vetor numera
 {
 	for(int i=0; i<vector_size; i++)
     {
-        for(int j=i+1; j<vector_size; j++) { if(vector[i]>vector[j])
+        for(int j=i+1; j<vector_size; j++) 
+		{ 
+			if(vector[i]>vector[j])
             {
                 float temp = vector[i];
                 vector[i] = vector[j];
@@ -21,7 +23,15 @@ void ADS_Vsort(int vector[], int vector_size) // ADSLib :: organiza vetor numera
     }
 }
 
-
+void ADS_Vinverse(int vector[], int vector_size) // ADSLib :: inverte vetor do tipo 'int'
+{
+	for(int i=0; i<=ceil(vector_size/2); i++){
+		int inv = (vector_size-1) - i;
+		int temp = vector[i];
+		vector[i] = vector[inv];
+		vector[inv] = temp;
+	}
+}
 
 // --- main --- 
 int main()
@@ -29,9 +39,10 @@ int main()
   // intro
   puts("Biblioteca ADSLib Inicializada");
   // chamada
-  int vec[5] = {5,3,9,4,6};
-  ADS_Vsort(vec,5);
-  for(int i=0;vec[i]!='\0';i++){
+  int buffer = 5;
+  int vec[buffer] = {4,5,3,1,2};
+  ADS_Vinverse(vec,buffer);
+  for(int i=0;i<buffer;i++){
   	printf("%d, ",vec[i]);
   }
   // retorno
