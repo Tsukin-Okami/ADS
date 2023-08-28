@@ -4,32 +4,36 @@
 #include <string.h>
 /* 
     - Modulo de Bibliotecas -
-  Tipos inclusos:
-> ADS_SORT = organiza vetor numeral em ordem decrescente
-> ADS_
 */
 #define prefix ADS
 
-void organizar_notas()
+void ADS_Vsort(int vector[], int vector_size) // ADSLib :: organiza vetor numeral em ordem crescente
 {
-	for(int i=0; i<qtd; i++)
+	for(int i=0; i<vector_size; i++)
     {
-        for(int j=i+1; j<qtd; j++) { if(nota_provas[i]>nota_provas[j])
+        for(int j=i+1; j<vector_size; j++) { if(vector[i]>vector[j])
             {
-                float temp = nota_provas[i];
-                nota_provas[i] = nota_provas[j];
-                nota_provas[j] = temp;
+                float temp = vector[i];
+                vector[i] = vector[j];
+                vector[j] = temp;
             }
         }
     }
 }
+
+
+
 // --- main --- 
 int main()
 {
   // intro
   puts("Biblioteca ADSLib Inicializada");
   // chamada
-  
+  int vec[5] = {5,3,9,4,6};
+  ADS_Vsort(vec,5);
+  for(int i=0;vec[i]!='\0';i++){
+  	printf("%d, ",vec[i]);
+  }
   // retorno
   return 0;
 }
