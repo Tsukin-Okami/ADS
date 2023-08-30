@@ -23,7 +23,7 @@ void ADS_Vsort(int vector[], int vector_size) // ADSLib :: organiza vetor numera
     }
 }
 
-void ADS_Vinverse(int vector[], int vector_size) // ADSLib :: inverte vetor do tipo 'int'
+void ADS_Vreverse(int vector[], int vector_size) // ADSLib :: inverte vetor do tipo 'int'
 {
 	for(int i=0; i<(vector_size/2); i++){
 		int inv = (vector_size- i - 1);
@@ -33,17 +33,33 @@ void ADS_Vinverse(int vector[], int vector_size) // ADSLib :: inverte vetor do t
 	}
 }
 
+const int xm=3, ym=2;
+void ADS_Minverse(int matrix[xm][ym])
+{
+	for(int x=0;x<xm;x++){
+		for(int y=0;y<ym;y++)
+		{
+			matrix[x][y] *= -1;
+		}
+	}
+}
+
 // --- main --- 
 int main()
 {
   // intro
   puts("Biblioteca ADSLib Inicializada");
   // chamada
-  int buffer = 5;
-  int vec[buffer] = {4,5,3,1,2};
-  ADS_Vinverse(vec,buffer);
-  for(int i=0;i<buffer;i++){
-  	printf("%d, ",vec[i]);
+  int mtx[xm][ym] = {
+  	{1,-2},
+	{-3,4},
+	{5,-6}
+  };
+  
+  ADS_Minverse(mtx);
+  
+  for(int x=0;x<xm;x++){
+  	printf("[%d]\t| %d\t| %d\n",x,mtx[x][0],mtx[x][1]);
   }
   // retorno
   return 0;
