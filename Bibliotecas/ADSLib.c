@@ -25,8 +25,8 @@ void ADS_Vsort(int vector[], int vector_size) // ADSLib :: organiza vetor numera
 
 void ADS_Vinverse(int vector[], int vector_size) // ADSLib :: inverte vetor do tipo 'int'
 {
-	for(int i=0; i<=ceil(vector_size/2); i++){
-		int inv = (vector_size-1) - i;
+	for(int i=0; i<(vector_size/2); i++){
+		int inv = (vector_size- i - 1);
 		int temp = vector[i];
 		vector[i] = vector[inv];
 		vector[inv] = temp;
