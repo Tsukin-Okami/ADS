@@ -4,7 +4,8 @@
 
 // Desvio Padrao
 
-#define MAX_SIZE 100  // Defina o tamanho máximo do conjunto
+#define MAX_SIZE 100  // Define o tamanho máximo do conjunto
+#define FORMAT "%.2f" // Define o formato de saída da impressão
 
 // Função para calcular a média de um conjunto de valores
 float calcularMedia(const float conjunto[], int size) {
@@ -27,32 +28,39 @@ float calcularDesvioPadrao(const float conjunto[], int size, float media) {
 }
 
 int main() {
-    int size;
+    int size; // tamanho do conjunto
 
+	// Define o tamanho do conjunto de acordo com a entrada do usuário
     printf("Digite o tamanho do conjunto: ");
     scanf("%d", &size);
 
+	// Verifica o tamanho inserido pelo usuário e aplica se for válido
     if (size <= 0 || size > MAX_SIZE) {
         printf("Tamanho invalido.\n");
         return 1;
     }
 
+	// Alocar memória para o conjunto
     float *conjunto = (float*)malloc(size*sizeof(float));
     if (conjunto == NULL) {
         printf("Erro de alocacao de memoria.\n");
         return 1;
     }
 
+	// Preencher o conjunto com os valores do usuário
     for (int i=0; i<size; i++) {
         printf("Digite o valor na %da posicao: ", i+1);
         scanf("%f", &conjunto[i]);
     }
 
+	// Calculos essenciais
     float media = calcularMedia(conjunto, size);
     float desvioPadrao = calcularDesvioPadrao(conjunto, size, media);
 
-    printf("Desvio padrao: %.2f\n", desvioPadrao);
+	// Imprime o desvio padrão na tela
+    printf("Desvio padrao: "FORMAT"\n", desvioPadrao);
 
+	// Liberar memória do conjunto
     free(conjunto);
 
     return 0;
