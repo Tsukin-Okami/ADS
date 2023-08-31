@@ -6,13 +6,6 @@
 #define GRID_XSIZE 4 // Define o tamanho vertical da matriz
 #define GRID_YSIZE 3 // Define o tamanho horizontal da matriz
 
-/*	 _ _ _ _ Y
-	  |L L L L
-3x4	|L L L L
-	  |L L L L
-  	X
-*/
-
 void TranspostarMatriz(const float matriz[][GRID_YSIZE], float matriz_transposta[][GRID_XSIZE]) {
 	for (int x=0; x<GRID_XSIZE; x++) {
 		for (int y=0; y<GRID_YSIZE; y++) {
