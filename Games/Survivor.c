@@ -67,26 +67,44 @@ void reset()
 
 // controls
 
+void remake()
+{
+	int x = plr_pos[0]-2, y = plr_pos[1]-2;
+	int xsize = x, ysize = y;
+	for(x;x<xsize+HEIGHT;x++){
+		for(y;y<ysize+WIDTH;y++){
+			if(map[x][y] < 0 || map[x][y] > MAXMATERIALS ){
+				matrix[x][y] = mat[3];
+			}
+			else{
+				matrix[x][y] = mat[map[x][y]];
+			}
+		}
+	}
+}
+
 void up()
 {
-	plr_pos[0]++;
-	int x = plr_pos[0]-2, y = plr_pos[1]-2;
-	for(x;x<)
+	plr_pos[0]--;
+	remake();
 }
 
 void down()
 {
-	
+	plr_pos[0]++;
+	remake();
 }
 
 void left()
 {
-	
+	plr_pos[1]--;
+	remake();
 }
 
 void right()
 {
-	
+	plr_pos[1]++;
+	remake();
 }
 
 // main
@@ -99,6 +117,7 @@ void window()
 		}
 		putchar('\n');
 	}
+	printf("Use WASD para andar - posicao A[%d] L[%d]:\n",plr_pos[0],plr_pos[1]);
 	char key;
 	scanf(" %c",&key);
 	clear();
@@ -130,12 +149,10 @@ int main()
 	printf("\n\tWelcome to Survivor!\n\nPress 1 to start!\n");
 	line();
 	scanf("%d",&n);
-	
 	if(n==1){
 		clear();
 		reset();
 		window();
 	}
-	
 	return 0;
 }
