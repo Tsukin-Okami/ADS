@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// PLAYER ZONE
-#define WIDTH 5
-#define HEIGHT 5 
+// PLAYER ZONE - W5 / H5
+#define WIDTH 21
+#define HEIGHT 9 
 
 // MAP ZONE
 #define MW 21 // Largura
@@ -16,10 +16,9 @@
 int plr_pos[2] = {2,2};
 
 /*    
-	STONE-0 | GRASS-1 | POINTS-2 | VOID-3 | PLAYER-4
-	
+	PLAIN-0 | GRASS-1 | POINTS-2 | VOID-3 | PLAYER-4
 */
-const char mat[MAXMATERIALS] = {'.','~','*','#','+'};
+const char mat[MAXMATERIALS] = {'-','~','0','#','+'};
 
 const int map[MH][MW] = {
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
@@ -65,10 +64,26 @@ void reset()
 	matrix[plr_pos[0]][plr_pos[1]] = mat[4];
 }
 
-// controls
+// evita o player sair fora do mapa
+void fix()
+{
+    for(int i=0;i<2;i++){
+        if(plr_pos[i] < 0){
+            plr_pos[i] = 0;
+        }
+    }
+    if(plr_pos[0] > MH-1){
+        plr_pos[0] = MH-1;
+    }
+    if(plr_pos[1] > MW-1){
+        plr_pos[1] = MW-1;
+    }
+}
 
+// refaz a matriz do mapa atual de acordo com a posição do player
 void remake()
 {
+    fix(); // essential
 	int x = plr_pos[0]-2, y = plr_pos[1]-2;
 	int xsize = x, ysize = y;
 	for(x;x<xsize+HEIGHT;x++){
@@ -83,6 +98,8 @@ void remake()
 	}
 	matrix[plr_pos[0]][plr_pos[1]] = mat[4];
 }
+
+// controls
 
 void up()
 {
