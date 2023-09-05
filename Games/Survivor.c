@@ -81,6 +81,7 @@ void remake()
 			}
 		}
 	}
+	matrix[plr_pos[0]][plr_pos[1]] = mat[4];
 }
 
 void up()
