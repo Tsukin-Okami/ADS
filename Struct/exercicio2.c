@@ -13,7 +13,6 @@ struct T_Dados
 
 void setCarta(struct T_Dados *c)
 {
-	 
     printf("informe seu nome: ");
     fgets(c->nome, bf, stdin);
     strtok(c->nome, "\n");
