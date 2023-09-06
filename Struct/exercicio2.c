@@ -4,14 +4,14 @@
 
 #define bf 255 // tamanho máximo do texto
 
-struct T_Carta
+struct T_Dados
 {
     char nome[bf];
     int idade;
     char endereco[bf];
 };
 
-void setCarta(struct T_Carta *c)
+void setCarta(struct T_Dados *c)
 {
 	 
     printf("informe seu nome: ");
@@ -28,7 +28,7 @@ void setCarta(struct T_Carta *c)
     strtok(c->endereco, "\n"); 
 }
 
-void Display(struct T_Carta c)
+void Display(struct T_Dados c)
 {
     putchar('\n');
     printf("nome: %s\nidade: %d\nendereco: %s\n",
@@ -39,7 +39,7 @@ void Display(struct T_Carta c)
 
 int main()
 {
-    struct T_Carta c;
+    struct T_Dados c;
     setCarta(&c);
     Display(c);
     return 0;
