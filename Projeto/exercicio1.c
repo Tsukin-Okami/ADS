@@ -19,14 +19,20 @@ void editProject(struct Project projetos[])
 	printf("\tDetalhes do projeto:\nId: %d\nValor: ",projetos[tipo-1].id);
 	
 	float valor;
+	char format;
+	
 	scanf("%f",&valor);
 	valor = abs(valor);
-	projetos[tipo-1].value = valor;
 	
 	printf("Tipo: ");
-	char format;
 	scanf(" %c",&format);
 	format = toupper(format);
+	
+	if (format == 'D') {
+		valor *= -1;
+	}
+	
+	projetos[tipo-1].value += valor;
 	projetos[tipo-1].type = format;
 }
 
@@ -59,8 +65,8 @@ int main()
 	
 	printf("\n\tLista de projetos:\n");
 	for (int i=0;i<pjmax;i++) {
-		char modo = (projetos[i].type == 'R') ? '+' : '-';
-		printf("Projeto %d : %cR$%.2f\n",projetos[i].id,modo,projetos[i].value);
+		//char modo = (projetos[i].type == 'R') ? '+' : '-';
+		printf("Projeto %d : R$%.2f\n",projetos[i].id,projetos[i].value);
 	}
 	
 	return 0;
