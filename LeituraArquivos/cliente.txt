@@ -1,0 +1,4 @@
+Nome: %s
+Telefone: %s
+Endereco: %s
+CPF: %s
