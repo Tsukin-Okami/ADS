@@ -39,13 +39,12 @@ int main()
 {
     struct FormatoDados Cliente;
     //EditData(&Cliente);
-
+/*
 	strcpy(Cliente.nome,"Marcos Fontaine");
 	strcpy(Cliente.telefone,"+5551992353921");
 	strcpy(Cliente.endereco,"Vila Nova");
 	strcpy(Cliente.cpf,"05132654210");
-
-	int *memory = malloc(sizeof(struct FormatoDados));
+*/
 	FILE *database = fopen("cliente.txt", "w");
 
 	if (database == NULL) {
@@ -53,7 +52,7 @@ int main()
 		return 1;
 	}
 
-	fprintf(database, "%s", "Nome: %s\nTelefone: %s\nEndereco: %s\nCPF: %s\n", Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.cpf);
+	fprintf(database, "Nome: %s\nTelefone: %s\nEndereco: %s\nCPF: %s\n", Cliente.nome, Cliente.telefone, Cliente.endereco, Cliente.cpf);
 
     return 0;
 }
