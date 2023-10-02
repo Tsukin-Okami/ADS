@@ -38,7 +38,7 @@ void EditData(struct FormatoDados *data)
 int main()
 {
     struct FormatoDados Cliente;
-    //EditData(&Cliente);
+    EditData(&Cliente);
 /*
 	strcpy(Cliente.nome,"Marcos Fontaine");
 	strcpy(Cliente.telefone,"+5551992353921");
