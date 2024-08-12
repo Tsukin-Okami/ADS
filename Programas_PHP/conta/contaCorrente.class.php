@@ -1,7 +1,5 @@
 <?php
 
-require "./conta.class.php";
-
 class ContaCorrente extends Conta {
     public $limite;
     // metodo construtor sobrescrito //
@@ -22,4 +20,3 @@ class ContaCorrente extends Conta {
         return true;
     }
 }
-

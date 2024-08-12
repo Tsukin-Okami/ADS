@@ -1,7 +1,5 @@
 <?php
 
-require "./conta.class.php";
-
 class ContaPoupanca extends Conta {
     public $aniversario;
     // metodo construtor sobrescrito //
