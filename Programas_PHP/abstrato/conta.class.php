@@ -1,6 +1,6 @@
 <?php
 
-class conta {
+abstract class Conta {
     public int $agencia;
     public string $codigo;
     public $datacriacao;
@@ -16,6 +16,7 @@ class conta {
         $this->titular = $titular;
         $this->senha = $senha;
         $this->saldo = $saldo;
+        $this->cancelada = false;
     }
 
     public function __destruct() {

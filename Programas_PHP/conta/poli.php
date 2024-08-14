@@ -2,10 +2,10 @@
 
 # carregas as classes
 
-include_once './pessoa.class.php';
-include_once './conta.class.php';
-include_once './contaPoupanca.class.php';
-include_once './contaCorrente.class.php';
+include_once 'pessoa.class.php';
+include_once 'conta.class.php';
+include_once 'contaPoupanca.class.php';
+include_once 'contaCorrente.class.php';
 
 # criação de um objeto $Carlos
 
@@ -28,3 +28,4 @@ foreach ($contas as $key => $conta) {
     $conta->retirar(100);
     echo("O saldo atual da conta $key é R\$ {$conta->obterSaldo()} \n");
 }
+

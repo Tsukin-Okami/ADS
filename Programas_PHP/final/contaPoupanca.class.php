@@ -1,21 +1,18 @@
 <?php
 
-class ContaCorrente extends Conta {
-    public $limite;
+final class ContaPoupanca extends Conta {
+    public $aniversario;
     // metodo construtor sobrescrito //
-    public function __construct($agencia, $codigo, $datacriacao, $titular, $senha, $saldo, $limite) {
+    public function __construct($agencia, $codigo, $datacriacao, $titular, $senha, $saldo, $aniversario) {
         // chamada do método construtor da classe pai //
         parent::__construct($agencia, $codigo, $datacriacao, $titular, $senha, $saldo);
-        $this->limite = $limite;
+        $this->aniversario = $aniversario;
     }
 
     // metodo retirar sobrescrito
     public function retirar($quantia) {
-        $cpmf = 0.05;
-
-        if ($this->saldo + $this->limite >= $quantia) {
+        if ($this->saldo >= $quantia) {
             parent::retirar($quantia);
-            parent::retirar($quantia * $cpmf);
         } else {
             echo "Retirada não permitida... \n";
             return false;
