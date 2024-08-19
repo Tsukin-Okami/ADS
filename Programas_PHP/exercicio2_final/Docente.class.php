@@ -15,18 +15,18 @@ final class Docente extends Pessoa {
     public function __destruct() {
         echo ("Objeto {$this->nome} foi destruido.");
     }
-
+/*
     public function formar($formacao) {
         $this->formacao = $formacao;
-    }
+    }*/
 
     /*      ERRO DESCONHECIDO NA FUNÇÃO FORMAR - PARENT::FORMAR() já existente porém não existe
         Resolve se retirar o parametro '$salario'
-
-    public function formar($formacao, $salario) {
+*/
+    public function formar($formacao,$salario){
         $this->formacao = $formacao;
-        $this->salario = $salario * 20;
-    }*/
+        $this->salario = ($salario * 20);
+    }
 
     public function aumentarSalario($salario) {
         $this->salario += $salario;
