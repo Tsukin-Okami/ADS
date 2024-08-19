@@ -55,3 +55,4 @@ echo "Descricao: {$produto->descricao} \n";
 echo "\tFornecedor:\n";
 echo "Codigo: {$produto->fornecedor->codigo} \n";
 echo "Razao Social: {$produto->fornecedor->razao} \n";
+ 
