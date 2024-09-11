@@ -22,6 +22,12 @@ class CalculadoraAvancada implements Calculadora
 }
 
 $calculadora = new CalculadoraAvancada;
-echo $calculadora->somar(1,2) . "\n";
-echo $calculadora->subtrair(1,2) . "\n";
-echo $calculadora->multiplicar(1,2). "\n";
+
+$num = 5;
+$res;
+
+$res = $calculadora->somar($num,3);
+$res = $calculadora->multiplicar($res, 5);
+$res = $calculadora->subtrair($res, -12);
+
+echo $res;
