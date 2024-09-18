@@ -9,11 +9,11 @@ $password = "";
 // conexão com dados
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Conexão realizada com sucesso";
 } catch (PDOException $e) {
-    echo "Falha na conexão".$e->getMessage();
+    echo "Falha na conexão: ".$e->getMessage();
+    die();
 }
 
 // dados a serem inseridos
