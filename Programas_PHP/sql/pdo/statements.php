@@ -27,13 +27,14 @@ CREATE TABLE produtos (
 $nome = ["leite", "pera", "limão"];
 $preco = [2.60, 1.20, 4.50];
 
-for ($i=0; $i < 3; $i++) { 
-    # code...
-    $sql = "INSERT INTO produtos(nome, preco) VALUES (?, ?)";
+// query
+$sql = "INSERT INTO produtos(nome, preco) VALUES (?, ?)";
 
-    // prepara a conexão
-    $stmt = $conn->prepare($sql);
+// prepara a conexão
+$stmt = $conn->prepare($sql);
 
+print_r($stmt);
+for ($i=0; $i < 3; $i++) {
     if ($stmt->execute([$nome[$i], $preco[$i]])) {
         echo "dados inseridos com sucesso\n";
     } else {
