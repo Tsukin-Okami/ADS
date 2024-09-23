@@ -45,7 +45,7 @@ try {
     tabelar("Erro", ["Código", "Mensagem", "Arquivo"], [$err->getCode(), $err->getMessage(), $err->getFile()]);
 }
 
-//tabelar("Aviso", ["Mensagem"], ["Conexão fechada"]);
+tabelar("Aviso", ["Mensagem"], ["Conexão fechada"]);
 
 // fecha a conexão
 $conn = null;
