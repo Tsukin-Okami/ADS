@@ -74,7 +74,7 @@ class TFilter extends TExpression
             $result = $value;
         }
         // retorna o valor
-        return $value;
+        return $result;
     }
 
     /*

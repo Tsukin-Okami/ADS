@@ -29,6 +29,8 @@ final class TSqlInsert extends TSqlInstruction
                 $this->columnValues[$column] = $value ? 'TRUE' : 'FALSE';
             } else if ($value !== '') {
                 // caso seja outro tipo de dado
+                $this->columnValues[$column] = $value;
+            } else {
                 $this->columnValues[$column] = "NULL";
             }
         }
@@ -41,7 +43,7 @@ final class TSqlInsert extends TSqlInstruction
 
     public function setCriteria(TCriteria $criteria) {
         // lança o erro
-        throw new TException("Can't Call setCriteria from " . __CLASS__);
+        throw new Exception("Can't Call setCriteria from " . __CLASS__);
     }
 
     /**
@@ -49,10 +51,11 @@ final class TSqlInsert extends TSqlInstruction
      * retorna a instrução SQL Insert em forma de string
      */
 
-    public function getInstruction() {
+    public function getInstruction() 
+    {
         $this->sql = "INSERT INTO {$this->entity} (";
         // monta uma string contendo os nomes das colunas
-        $values = implode(',', array_keys($this->columnValues));
+        $columns = implode(',', array_keys($this->columnValues));
         // monta uma string contendo os valores
         $values = implode(',', array_values($this->columnValues));
         $this->sql .= $columns.')';

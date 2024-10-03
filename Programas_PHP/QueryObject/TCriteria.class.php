@@ -49,10 +49,9 @@ class TCriteria extends TExpression
                 // concatena o operador com a respectiva expressão
                 $result .= $operator . $expression->dump() . ' ';
             }
+            $result = trim($result);
+            return "({$result})";
         }
-
-        $result = trim($result);
-        return "({$result})";
     }
 
     /*
