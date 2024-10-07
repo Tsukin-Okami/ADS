@@ -34,7 +34,7 @@ final class TSqlSelect extends TSqlInstruction
         $this->sql .= implode(', ', $this->column);
 
         // adiciona na clausula FROM o nome da tabela
-        $this->sql .= "FROM" . $this->entity;
+        $this->sql .= " FROM " . $this->entity;
 
         // adiciona na clausula WHERE do objeto $this->criteria
         if ($this->criteria)
@@ -53,10 +53,20 @@ final class TSqlSelect extends TSqlInstruction
             // obtem a ordenação do select
             if ($order)
             {
-                $this->sql .= " ORDER ";
+                $this->sql .= " ORDER BY ". $order;
             }
 
-            return $this->sql;
+            if ($limit)
+            {
+                $this->sql .= " LIMIT ". $limit;
+            }
+
+            if ($offset)
+            {
+                $this->sql .= " OFFSET ". $offset;
+            }
         }
+
+        return $this->sql;
     }
 }
