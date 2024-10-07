@@ -11,12 +11,12 @@ class TFilter extends TExpression
     private $operator; // operador
     private $value; // valor
 
-    /*
-        Método __construct()
-        instancia um novo filtro
-        @param $variable = variável
-        @param $operator = operador (>,<)
-        @param $value = valor a ser comparado
+    /**
+     *   Método __construct()
+     *   instancia um novo filtro
+     *   @param $variable = variável
+     *   @param $operator = operador (>,<)
+     *   @param $value = valor a ser comparado
     */
 
     public function __construct($variable, $operator, $value)
@@ -31,12 +31,12 @@ class TFilter extends TExpression
         $this->value = $this->transform($value);
     }
 
-    /*
-        Método Transform()
-        recebe o valor e faz as modificações necessárias
-        para ele ser implementado pelo banco de dados
-        podendo ser um integer,string,boolean ou array
-        @param $value = valor a ser transformado
+    /**
+     *   Método Transform()
+     *   recebe o valor e faz as modificações necessárias
+     *   para ele ser implementado pelo banco de dados
+     *   podendo ser um integer,string,boolean ou array
+     *   @param $value = valor a ser transformado
     */
 
     private function transform($value) {
@@ -53,7 +53,7 @@ class TFilter extends TExpression
                 }
             }
             // converte o array em string separada por ","
-            $result = '('.implode(separator: ',', array: $foo).')';
+            $result = '('.implode(separator: ', ', array: $foo).')';
         }
         // caso seja uma string
         else if (is_string($value)) {
@@ -77,9 +77,9 @@ class TFilter extends TExpression
         return $result;
     }
 
-    /*
-        Método dump()
-        retorna o filtro em forma de expressão
+    /**
+     *   Método dump()
+     *   retorna o filtro em forma de expressão
     */
 
     public function dump() {

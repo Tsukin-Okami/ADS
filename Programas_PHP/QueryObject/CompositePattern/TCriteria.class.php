@@ -47,7 +47,7 @@ class TCriteria extends TExpression
             foreach ($this->expressions as $i => $expression) {
                 $operator = $this->operators[$i];
                 // concatena o operador com a respectiva expressão
-                $result .= $operator . $expression->dump() . ' ';
+                $result .= $operator . ' ' . $expression->dump() . ' ';
             }
             $result = trim($result);
             return "({$result})";

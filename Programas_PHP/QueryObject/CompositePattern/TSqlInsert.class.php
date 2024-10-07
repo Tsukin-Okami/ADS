@@ -59,7 +59,7 @@ final class TSqlInsert extends TSqlInstruction
         // monta uma string contendo os valores
         $values = implode(', ', array_values($this->columnValues));
         $this->sql .= $columns.')';
-        $this->sql .= " values ({$values})";
+        $this->sql .= " VALUES ({$values})";
         return $this->sql;
     }
 }

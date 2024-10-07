@@ -28,7 +28,7 @@ final class TSqlSelect extends TSqlInstruction
     public function getInstruction()
     {
         // monta a instrução do SELECT
-        $this->sql = "SELECT";
+        $this->sql = "SELECT ";
 
         // monta string com os nomes das colunas
         $this->sql .= implode(', ', $this->column);
