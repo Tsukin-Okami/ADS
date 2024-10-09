@@ -12,10 +12,7 @@ final class TConnection
      * não existirão instancias de TConnection, por isso estamos marcando-o como private
     */
 
-    private function __construct()
-    {
-
-    }
+    private function __construct() {}
 
     /**
      * Método open()
