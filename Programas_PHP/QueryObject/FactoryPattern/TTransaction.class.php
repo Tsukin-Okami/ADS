@@ -59,7 +59,6 @@ final class TTransaction
      * Método close()
      * aplica todas as operações realizadas e fecha a transação
     */
-
     public static function close()
     {
         if (self::$conn)
