@@ -20,7 +20,8 @@ final class TConnection
      * @param string $name
     */
 
-    public static function open($name) {
+    public static function open($name) 
+    {
         // verifica se existe arquivo de configuração para este banco de dados
         if (file_exists("app.config/{$name}.ini"))
         {
@@ -42,7 +43,8 @@ final class TConnection
         $port = isset($db['port']) ? $db['port'] : 'NULL';
 
         // descobre qual o tipo de (driver) banco de dados a ser utilizado
-        switch ($type) {
+        switch ($type) 
+        {
             case 'pgsql':
                 $port = $port ? $port : '5432';
 
@@ -84,6 +86,4 @@ final class TConnection
         // retorna o objeto instanciado
         return $conn;
     }
-
-
 }

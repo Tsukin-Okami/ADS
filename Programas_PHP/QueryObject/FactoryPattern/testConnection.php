@@ -58,7 +58,7 @@ try {
 } catch (PDOException $e) {
     throw $e;
 }
-/*
+/* POSTGRE DATABASE
 // abre conexão com a base pg_livro
 try {
     $conn = TConnection::open("pg_livro");
