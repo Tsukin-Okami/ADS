@@ -1,0 +1,15 @@
+body {
+    
+}
+
+.form-div {
+    padding: 16px 12px;
+    margin: 5vh;
+
+    height: fit-content;
+    width: 500px;
+
+    background-color: gainsboro;
+    border: 1px solid grey;
+    border-radius: 8px;
+}

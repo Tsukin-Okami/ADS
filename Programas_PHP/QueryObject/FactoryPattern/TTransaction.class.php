@@ -8,6 +8,7 @@
 final class TTransaction
 {
     private static $conn; // conexão ativa
+    private $logger;
 
     /**
      * Método __construct()
