@@ -8,14 +8,12 @@
 final class TTransaction
 {
     private static $conn; // conexão ativa
-    private $logger;
 
     /**
      * Método __construct()
      * está declarando como private para impedir que se crie instâncias de TTransaction
     */
-    private function __construct() 
-    {}
+    private function __construct() {}
     
     /**
      * Método open()
